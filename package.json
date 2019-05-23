@@ -5,6 +5,7 @@
     "react-dom": ">=16.4.2"
   },
   "devDependencies": {
+    "react-dom": ">=16.4.2",
     "webpack": "^2.0",
     "babel-core": "^6.0",
     "babel-loader": "^7.0",
