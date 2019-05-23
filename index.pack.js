@@ -264,9 +264,9 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(26);
+  module.exports = __webpack_require__(27);
 } else {
-  module.exports = __webpack_require__(25);
+  module.exports = __webpack_require__(26);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -549,7 +549,7 @@ module.exports = ExecutionEnvironment;
  * 
  */
 
-var isTextNode = __webpack_require__(21);
+var isTextNode = __webpack_require__(22);
 
 /*eslint-disable no-bitwise */
 
@@ -775,7 +775,7 @@ module.exports = warning;
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(22);
+  var ReactPropTypesSecret = __webpack_require__(23);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -887,26 +887,29 @@ var _TodoItem = __webpack_require__(14);
 
 var _TodoItem2 = _interopRequireDefault(_TodoItem);
 
+var _todosData = __webpack_require__(16);
+
+var _todosData2 = _interopRequireDefault(_todosData);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
-Time to have fun styling! But first things first: 
-
-1. Change the input/p combo below to be a new component called <TodoItem />. <TodoItem /> (for now) will just have the same displayed data below (every todo item is the same) hardcoded inside of it. (We'll learn soon how to make the TodoItem more flexible)
-    
-2. Style up the page however you want! You're welcome to use regular CSS (in the CSS file) or inline styles, or both!
-*/
-
 function App() {
+    var todoItems = _todosData2.default.map(function (item) {
+        return _react2.default.createElement(_TodoItem2.default, { key: item.id, item: item });
+    });
+
     return _react2.default.createElement(
         "div",
         { className: "todo-list" },
-        _react2.default.createElement(_TodoItem2.default, null),
-        _react2.default.createElement(_TodoItem2.default, null),
-        _react2.default.createElement(_TodoItem2.default, null),
-        _react2.default.createElement(_TodoItem2.default, null)
+        todoItems
     );
-}
+} /*
+  Time to have fun styling! But first things first: 
+  
+  1. Change the input/p combo below to be a new component called <TodoItem />. <TodoItem /> (for now) will just have the same displayed data below (every todo item is the same) hardcoded inside of it. (We'll learn soon how to make the TodoItem more flexible)
+      
+  2. Style up the page however you want! You're welcome to use regular CSS (in the CSS file) or inline styles, or both!
+  */
 
 exports.default = App;
 
@@ -949,9 +952,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(24);
+  module.exports = __webpack_require__(25);
 } else {
-  module.exports = __webpack_require__(23);
+  module.exports = __webpack_require__(24);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -973,15 +976,15 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function TodoItem() {
+function TodoItem(props) {
     return _react2.default.createElement(
         "div",
         { className: "todo-item" },
-        _react2.default.createElement("input", { type: "checkbox" }),
+        _react2.default.createElement("input", { type: "checkbox", checked: props.item.completed }),
         _react2.default.createElement(
             "p",
             null,
-            "Placeholder text here"
+            props.item.text
         )
     );
 }
@@ -1018,6 +1021,40 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var todosData = [{
+    id: 1,
+    text: "Take out the trash",
+    completed: true
+}, {
+    id: 2,
+    text: "Grocery shopping",
+    completed: false
+}, {
+    id: 3,
+    text: "Clean gecko tank",
+    completed: false
+}, {
+    id: 4,
+    text: "Mow lawn",
+    completed: true
+}, {
+    id: 5,
+    text: "Catch up on Arrested Development",
+    completed: false
+}];
+
+exports.default = todosData;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1047,7 +1084,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1062,7 +1099,7 @@ module.exports = camelize;
 
 
 
-var camelize = __webpack_require__(16);
+var camelize = __webpack_require__(17);
 
 var msPattern = /^-ms-/;
 
@@ -1090,7 +1127,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1126,7 +1163,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1141,7 +1178,7 @@ module.exports = hyphenate;
 
 
 
-var hyphenate = __webpack_require__(18);
+var hyphenate = __webpack_require__(19);
 
 var msPattern = /^ms-/;
 
@@ -1168,7 +1205,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1196,7 +1233,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1211,7 +1248,7 @@ module.exports = isNode;
  * @typechecks
  */
 
-var isNode = __webpack_require__(20);
+var isNode = __webpack_require__(21);
 
 /**
  * @param {*} object The object to check.
@@ -1224,7 +1261,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1243,7 +1280,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1275,8 +1312,8 @@ var getActiveElement = __webpack_require__(8);
 var shallowEqual = __webpack_require__(9);
 var containsNode = __webpack_require__(7);
 var emptyObject = __webpack_require__(3);
-var hyphenateStyleName = __webpack_require__(19);
-var camelizeStyleName = __webpack_require__(17);
+var hyphenateStyleName = __webpack_require__(20);
+var camelizeStyleName = __webpack_require__(18);
 
 // Relying on the `invariant()` implementation lets us
 // have preserve the format and params in the www builds.
@@ -18557,7 +18594,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18802,7 +18839,7 @@ var vi={default:qi},wi=vi&&qi||vi;module.exports=wi.default?wi.default:wi;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20284,7 +20321,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
